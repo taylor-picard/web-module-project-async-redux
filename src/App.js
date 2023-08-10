@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
+  const data = data;
+
   return (
     <div className="App">
-      Async Redux Project
+      
     </div>
   );
 }
