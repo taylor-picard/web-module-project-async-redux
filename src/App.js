@@ -1,28 +1,27 @@
 import React,{ useEffect }  from 'react';
-import axios from 'axios';
 import './App.css';
-import { fetchStart, fetchSuccess } from './actions/actions';
+import { getFacts } from './actions/actions';
 import { connect } from 'react-redux';
 
+
 function App(props) {
-  const {data, isFetching,} = props;
+  const {data, isFetching, getFacts} = props;
 
   useEffect(()=> {
-    fetchStart();
-    axios.get('https://catfact.ninja/fact')
-      .then(res => {
-        console.log(res.data.fact);
-        fetchSuccess(res.data.fact);
-      })
+    getFacts();
   }, []);
   
+  const handleClick = () => {
+    getFacts();
+  }
+
   return (
     <div className="App">
       <h1>Cat Facts</h1>
       <div>
-        
+        {data}
       </div>
-      <button >Generate</button>
+      <button onClick={handleClick}>Generate</button>
     </div>
   );
 }
@@ -34,4 +33,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {getFacts})(App);

@@ -1,7 +1,7 @@
 import { FETCH_DATA_START, FETCH_DATA_SUCCESS } from "../actions/actions";
 
 const initialState = {
-    data: [],
+    data: '',
     error: '',
     isFetching: false
 };
